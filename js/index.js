@@ -18,7 +18,7 @@ const init = function(){
    
     let angles = 0;
     
-    
+    let sector;
     
     for(let x of array){
         let className = "sektor"
@@ -27,8 +27,8 @@ const init = function(){
         angles = average * x;
         console.log(angles)
         cont.append(div);
-        div.classList.add("sektor");
-        sector = new Sektor(".sektor",{
+        div.classList.add(className + x);
+        sector = new Sektor(".sektor"+ x,{
             angle: angles
         })
     }
