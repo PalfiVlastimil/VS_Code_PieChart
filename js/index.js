@@ -15,11 +15,11 @@ const init = function(){
     let value;
     for(let a of data){
        average += Number(a)
-       value = a;
-       console.log(value)
+       value = Number(a);
+       
        array.push(average);
     }
-    
+
     average = 360 / average // 60 => průměr pro hodnoty
     
     console.log(average);
@@ -29,12 +29,12 @@ const init = function(){
     let trueAngles = 0;
     let sector;
     let tbody = document.createElement("tbody");
-    for(let x of array){
+    for(let x of data){
         let className = "sektor"
         let cont = document.getElementById("pieContainer")
         let div = document.createElement("div")
         angles = average * x;
-        trueAngles = average * value;
+        trueAngles = average * x;
         console.log(trueAngles)
         
 
@@ -51,8 +51,8 @@ const init = function(){
             circleColor: "none",
             sectorColor: colors
         })
-        console.log(value)
         let pieTable = document.getElementById("pieTable")
+        
         //let thead = document.createElement("thead"); //Dal je mimo tbody, protože se kopírovalo
         
         let tr = document.createElement("tr");
@@ -60,7 +60,7 @@ const init = function(){
         
         let tdAngle = document.createElement("td");
         tdNumber.style.color = colors;
-        tdNumber.innerText = value;
+        tdNumber.innerText = x;
         tdAngle = trueAngles + "°";
         pieTable.append(tbody);
         tbody.append(tr)
