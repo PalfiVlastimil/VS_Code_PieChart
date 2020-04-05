@@ -12,24 +12,42 @@ const init = function(){
     let data = url.split(";");
     let average = 0;
     let array = [];
-    let value;
     for(let a of data){
        average += Number(a)
-       value = Number(a);
-       
        array.push(average);
+
     }
 
     average = 360 / average // 60 => průměr pro hodnoty
     
-    console.log(average);
-    console.log(array);
-   
-    let angles = 0;
-    let trueAngles = 0;
-    let sector;
     let tbody = document.createElement("tbody");
+    let trueAngles = 0;
+    let colors;
     for(let x of data){
+        colors = getRandomColor();
+
+        trueAngles = average * x
+        let tr = document.createElement("tr");
+        let tdNumber = document.createElement("td");
+        
+        let tdAngle = document.createElement("td");
+        tdNumber.style.color = colors;
+        tdNumber.innerText = x;
+        tdAngle = trueAngles + "°";
+        pieTable.append(tbody);
+        tbody.append(tr)
+        tr.append(tdNumber);
+        tr.append(tdAngle);
+    }
+
+
+
+
+
+
+    let angles = 0;
+    let sector;
+    for(let x of array){
         let className = "sektor"
         let cont = document.getElementById("pieContainer")
         let div = document.createElement("div")
@@ -42,7 +60,7 @@ const init = function(){
         
         cont.append(div);
 
-        let colors = getRandomColor();
+        colors = getRandomColor();
         
         div.classList.add(className + x, "pie");
         
@@ -53,19 +71,8 @@ const init = function(){
         })
         let pieTable = document.getElementById("pieTable")
         
-        //let thead = document.createElement("thead"); //Dal je mimo tbody, protože se kopírovalo
         
-        let tr = document.createElement("tr");
-        let tdNumber = document.createElement("td");
         
-        let tdAngle = document.createElement("td");
-        tdNumber.style.color = colors;
-        tdNumber.innerText = x;
-        tdAngle = trueAngles + "°";
-        pieTable.append(tbody);
-        tbody.append(tr)
-        tr.append(tdNumber);
-        tr.append(tdAngle);
         
 
     }   
