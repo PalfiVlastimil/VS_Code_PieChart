@@ -12,7 +12,8 @@ const init = function(){
     let data = url.split(";");
     let average = 0;
     let array = [];
-  
+
+    let colors;
     for(let a of data){
        average += Number(a)
        array.push(average);
@@ -24,40 +25,21 @@ const init = function(){
 
     let tbody = document.createElement("tbody");
     let trueAngles = 0;
-    let colors; 
-    for(let x of data){
-        colors = getRandomColor();
-
-        trueAngles = average * x
-        let tr = document.createElement("tr");
-        let tdNumber = document.createElement("td");
-        
-        let tdAngle = document.createElement("td");
-        tdNumber.style.color = colors;
-        tdNumber.innerText = x;
-        tdAngle = Math.round(trueAngles) + "°";
-        pieTable.append(tbody);
-        tbody.append(tr)
-        tr.append(tdNumber);
-        tr.append(tdAngle);
-    }
-
     let angles = 0;
     let sector;
-    for(let x of array){
+    for (let x = 0; x < array.length; x++) {
         let className = "sektor"
         let cont = document.getElementById("pieContainer")
         let div = document.createElement("div")
-        angles = average * x;
-        trueAngles = average * x;
+        angles = average * array[x];
+        trueAngles = average * data[x];
         console.log(trueAngles)
-        
+        colors = getRandomColor()
 
         div.style.zIndex = -x;
         
         cont.append(div);
 
-        colors = getRandomColor();
         
         div.classList.add(className + x, "pie");
         
@@ -66,12 +48,21 @@ const init = function(){
             circleColor: "none",
             sectorColor: colors
         })
-       
         
+        trueAngles = average * x
+        let tr = document.createElement("tr");
+        let tdNumber = document.createElement("td");
         
+        let tdAngle = document.createElement("td");
+        tdNumber.style.color = colors;
+        tdNumber.innerText = data[x];
+        tdAngle = Math.round(trueAngles) + "°";
+        pieTable.append(tbody);
+        tbody.append(tr)
+        tr.append(tdNumber);
+        tr.append(tdAngle);
         
-        
-
-    }   
+    }
+    
 }
 window.addEventListener("DOMContentLoaded", init);
