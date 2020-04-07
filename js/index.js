@@ -12,6 +12,7 @@ const init = function(){
     let data = url.split(";");
     let average = 0;
     let array = [];
+  
     for(let a of data){
        average += Number(a)
        array.push(average);
@@ -20,9 +21,10 @@ const init = function(){
 
     average = 360 / average // 60 => průměr pro hodnoty
     
+
     let tbody = document.createElement("tbody");
     let trueAngles = 0;
-    let colors;
+    let colors; 
     for(let x of data){
         colors = getRandomColor();
 
@@ -33,17 +35,12 @@ const init = function(){
         let tdAngle = document.createElement("td");
         tdNumber.style.color = colors;
         tdNumber.innerText = x;
-        tdAngle = trueAngles + "°";
+        tdAngle = Math.round(trueAngles) + "°";
         pieTable.append(tbody);
         tbody.append(tr)
         tr.append(tdNumber);
         tr.append(tdAngle);
     }
-
-
-
-
-
 
     let angles = 0;
     let sector;
@@ -69,7 +66,7 @@ const init = function(){
             circleColor: "none",
             sectorColor: colors
         })
-        let pieTable = document.getElementById("pieTable")
+       
         
         
         
