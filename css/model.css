@@ -1,23 +1,29 @@
-.pieContainer{
+#pieContainer{
     position: relative;
 }
 .Sektor{ 
     width: 300px;
     height: 300px;
     margin: 10px;
+    
 }
 .pie{
     position: absolute;
-    
+}
+#Table{
+    top: 325px;
+    position: relative;
 }
 #pieTable{
+
     display: table;
     border-collapse: collapse;
+
 }
 table tr, table td{
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    border: 2px solid black;
-    padding: 1em;
+    border: 2px solid #000000;
+    padding: 0.5em;
 }
